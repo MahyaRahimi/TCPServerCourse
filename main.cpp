@@ -107,13 +107,14 @@ void dostuff (int sock)
     memset(sendBuff, '0', sizeof(sendBuff));
     strcpy(sendBuff, "Message from server");
     write(sock, sendBuff, strlen(sendBuff));
+    while (1) {
         n = read(sock,buffer,255);
         if (n < 0) error_server("ERROR reading from socket");
         std::cout<<"do print::::\n";
         printf("Here is the message: %s\n",buffer);
         n = write(sock,"I got your message",18);
         if (n < 0) error_server("ERROR writing to socket");
-
+    }
 
 }
 
