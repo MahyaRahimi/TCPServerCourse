@@ -108,6 +108,7 @@ void dostuff (int sock)
     strcpy(sendBuff, "Message from server");
     write(sock, sendBuff, strlen(sendBuff));
     while (1) {
+        memset(buffer, 0, sizeof(buffer));
         n = read(sock,buffer,255);
         if (n < 0) error_server("ERROR reading from socket");
         std::cout<<"do print::::\n";
@@ -162,8 +163,8 @@ int main(void)
         }
         else close(connfd);
 
-        //strcpy(sendBuff, "Message from server");
-        //write(connfd, sendBuff, strlen(sendBuff));
+        strcpy(sendBuff, "Message from server");
+        write(connfd, sendBuff, strlen(sendBuff));
 
         //close(connfd);
         //sleep(1);
